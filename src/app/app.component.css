@@ -1,0 +1,6 @@
+.h-v-scroll{
+    overflow-y: scroll;
+    max-height: 250px;
+    overflow-x: scroll;
+    max-width: 700px;
+}

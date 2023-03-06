@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <h3 class="mt-2 mb-1">List of audits | Lazy loading <span style="font-size: 12px;"><strong>({{audits.length}} of {{totalCount}})</strong></span></h3>
+  <!-- <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="50" class="example-viewport"> -->
+    <div class="h-v-scroll">
+   
+      <table border="1" (scroll)="onScrollLoadData()">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User Name</th>
+             <th>Total Logged Time</th>
+              <th>IdleTime</th>
+               <th>Training Time</th>
+                <th>Coordination</th>
+                 <th>ReviewTime</th>
+                 <ng-container *ngFor="let i of Arr(4).fill(1)">
+                  <th>Date</th>
+                  <th>hour</th>
+                 </ng-container>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let audit of audits">
+            <td>{{audit.id}}</td>
+            <td>{{audit.username}}</td>
+            <td>{{audit.totalLoggedTime}}</td>
+            <td>{{audit.idleTime}}</td>
+            <td>{{audit.trainingTime}}</td>
+            <td>{{audit.coordination}}</td>
+            <td>{{audit.reviewTime}}</td>
+            <ng-container *ngFor="let date of audit.dates">
+              <td >
+                {{date.date}}
+              </td>
+              <td>
+                 {{date.hour}}
+              </td>
+            </ng-container>
+            
+        </tbody>
+       </table>
+    </div>
+ 
+ <!-- </cdk-virtual-scroll-viewport> -->
+  <!-- <ul class="list-group mt-3" #uiElement style="overflow-y: auto;max-height:400px;" (scroll)="onScrollLoadData()">
+    <li class="list-group-item" *ngFor="let audit of audits">
+      <span ><strong>{{audit.email ? audit.email : 'No Email entered'}}</strong></span>
+      <span >{{audit.statusCode === 200 ? 'Login success' : 'Login Failed'}}</span>
+    </li>
+  </ul> -->
+</div>
